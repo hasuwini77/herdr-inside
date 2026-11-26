@@ -13,6 +13,12 @@
 import net from 'node:net';
 import { readFileSync } from 'node:fs';
 
+// Exit quietly when the reader closes the pipe, e.g. `node labs/02-status-watch.mjs | head`.
+process.stdout.on('error', (err) => {
+  if (err.code === 'EPIPE') process.exit(0);
+  throw err;
+});
+
 const args = process.argv.slice(2);
 const opt = (name, fallback) => {
   const i = args.indexOf(name);
