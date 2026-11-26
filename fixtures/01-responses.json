@@ -1,0 +1,84 @@
+{
+  "_note": "Invented example data shaped like Herdr v0.9.5 responses. Not captured from a real session.",
+  "ping": {
+    "id": "lab:ping",
+    "result": {
+      "type": "pong",
+      "version": "0.9.5",
+      "protocol": 22,
+      "capabilities": { "live_handoff": true, "detached_server_daemon": true, "health_check": true }
+    }
+  },
+  "workspace.list": {
+    "id": "lab:workspaces",
+    "result": {
+      "type": "workspace_list",
+      "workspaces": [
+        {
+          "workspace_id": "w1",
+          "number": 1,
+          "label": "api",
+          "focused": true,
+          "pane_count": 3,
+          "tab_count": 2,
+          "active_tab_id": "w1:t1",
+          "agent_status": "working"
+        },
+        {
+          "workspace_id": "w2",
+          "number": 2,
+          "label": "web",
+          "focused": false,
+          "pane_count": 1,
+          "tab_count": 1,
+          "active_tab_id": "w2:t1",
+          "agent_status": "idle"
+        }
+      ]
+    }
+  },
+  "agent.list": {
+    "id": "lab:agents",
+    "result": {
+      "type": "agent_list",
+      "agents": [
+        {
+          "terminal_id": "term_a1",
+          "agent": "claude",
+          "agent_status": "working",
+          "title": "fix login redirect",
+          "workspace_id": "w1",
+          "tab_id": "w1:t1",
+          "pane_id": "w1:p1",
+          "focused": true
+        },
+        {
+          "terminal_id": "term_b2",
+          "agent": "codex",
+          "agent_status": "blocked",
+          "title": "add pagination",
+          "workspace_id": "w1",
+          "tab_id": "w1:t2",
+          "pane_id": "w1:p2",
+          "focused": false
+        },
+        {
+          "terminal_id": "term_c3",
+          "agent": "claude",
+          "agent_status": "idle",
+          "workspace_id": "w2",
+          "tab_id": "w2:t1",
+          "pane_id": "w2:p1",
+          "focused": false
+        }
+      ]
+    }
+  },
+  "bad.method": {
+    "id": "lab:bad",
+    "error": {
+      "code": "invalid_request",
+      "message": "invalid request: unknown variant `nope`"
+    }
+  }
+}
