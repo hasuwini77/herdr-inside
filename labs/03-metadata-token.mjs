@@ -11,6 +11,12 @@
 
 import net from "node:net";
 
+// Exit quietly when the reader closes the pipe, e.g. `node labs/03-metadata-token.mjs --dry-run | head`.
+process.stdout.on('error', (err) => {
+  if (err.code === 'EPIPE') process.exit(0);
+  throw err;
+});
+
 const TOKEN = "herdr_inside_lab"; // 1-32 chars: letters, digits, _ and -
 const SOURCE = "herdr-inside.lab03"; // letters, digits, : . _ - (max 80)
 const TTL_MS = 2500; // Herdr accepts 1..86400000; this lab stays under 5000
