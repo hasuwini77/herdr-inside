@@ -51,7 +51,7 @@ It first checks the process that leads the foreground group, then scores the oth
 
 Both are in [`agents.mdx`](https://github.com/herdrdev/herdr/blob/v0.9.5/docs/next/website/src/content/docs/agents.mdx#L68-L72).
 
-Version 0.9.5 knows 24 agents ([`src/detect/mod.rs#L35-L60`](https://github.com/herdrdev/herdr/blob/v0.9.5/src/detect/mod.rs#L35-L60) lists the enum). A new agent needs a new Herdr binary, because process names live in the binary.
+Version 0.9.5 knows 24 agents ([`src/detect/mod.rs#L35-L60`](https://github.com/herdrdev/herdr/blob/v0.9.5/src/detect/mod.rs#L35-L60) lists the enum). Detecting a new agent by its process name needs a new Herdr binary, because the names live in the binary. Since 0.9.2 an agent can also report its own state over the socket, with no Herdr release ([whats-new](../whats-new/0.9.x.md#agents-can-report-themselves)).
 
 ## Step 2a: screen detection
 
@@ -128,7 +128,7 @@ In words:
 3. Exception: a visible blocker on screen beats a non-blocked hook, for the same agent, when the screen read is not older than the hook report ([`#L2078-L2089`](https://github.com/herdrdev/herdr/blob/v0.9.5/src/terminal/state.rs#L2078-L2089)).
 4. For the six full-lifecycle agents the exception is off, and the screen is ignored ([`#L2078-L2081`](https://github.com/herdrdev/herdr/blob/v0.9.5/src/terminal/state.rs#L2078-L2081)). The API shows this as `screen_detection_skipped: true` on the agent ([`src/api/schema/agents.rs#L202-L203`](https://github.com/herdrdev/herdr/blob/v0.9.5/src/api/schema/agents.rs#L202-L203)).
 
-The exception exists because a hook can miss a permission prompt, and the screen cannot.
+The exception lets a dialog the screen rules recognise win over a hook that missed it. A dialog no rule matches still reads as idle (next section).
 
 ## Why status can be wrong
 
