@@ -145,7 +145,7 @@ Entries are token strings or inline tables with `fg`, `bold`, `dim` and up to 16
 
 ## Worked example: herdr-spinner
 
-[herdr-spinner](https://github.com/hasuwini77/herdr-spinner/blob/fa78b2b/spinner.js) animates the sidebar with a `$spin` token. Herdr's own working icon is a static glyph. The plugin gives you motion with no Herdr patch.
+[herdr-spinner](https://github.com/hasuwini77/herdr-spinner/blob/fa78b2b/spinner.js) animates the sidebar with a `$spin` token. Herdr's own working icon is a fixed glyph, `●` or `◐` depending on `ui.status_indicators` ([client/shell.rs#L178-L197](https://github.com/herdrdev/herdr/blob/v0.9.5/src/client/shell.rs#L178-L197)). The plugin gives you motion with no Herdr patch.
 
 **Manifest.** [`herdr-plugin.toml`](https://github.com/hasuwini77/herdr-spinner/blob/fa78b2b/herdr-plugin.toml) declares one `[[startup]]` command (`sh run.sh`) and five `[[actions]]`: restart, stop, next style, next theme, reset theme. `min_herdr_version` is `0.8.0`.
 

@@ -164,9 +164,14 @@ The fixture output looks like this:
 
 ```text
 00:00:00  w1:p1   claude     new -> idle
+00:00:00  w1:p2   codex      new -> idle
 00:00:01  w1:p1   claude     idle -> working
 00:00:04  w1:p1   claude     working -> blocked
+00:00:06  w1:p1   claude     blocked -> working
+00:00:07  w1:p2   codex      idle -> working
 00:00:12  w1:p1   claude     working -> done
+00:00:15  w1:p1   claude     done -> idle
+00:00:16  w1:p2   codex      working -> done
 ```
 
 Things to try in a live session:
@@ -175,7 +180,7 @@ Things to try in a live session:
 - Focus the pane that shows `done` and watch it change to `idle` with no agent output.
 - Trigger a permission prompt and watch `blocked`.
 
-Why polling and not `events.subscribe`? The `pane.agent_status_changed` subscription takes a required `pane_id` ([`src/api/schema/events.rs#L75-L80`](https://github.com/herdrdev/herdr/blob/v0.9.5/src/api/schema/events.rs#L75-L80)), and one bad pane id rejects the whole request ([`socket-api.mdx#L789-L792`](https://github.com/herdrdev/herdr/blob/v0.9.5/docs/next/website/src/content/docs/socket-api.mdx#L789-L792)). Polling also sees panes created after the lab started. A later chapter on the protocol covers subscriptions.
+Why polling and not `events.subscribe`? The `pane.agent_status_changed` subscription takes a required `pane_id` ([`src/api/schema/events.rs#L75-L80`](https://github.com/herdrdev/herdr/blob/v0.9.5/src/api/schema/events.rs#L75-L80)), and one bad pane id rejects the whole request ([`socket-api.mdx#L789-L792`](https://github.com/herdrdev/herdr/blob/v0.9.5/docs/next/website/src/content/docs/socket-api.mdx#L789-L792)). Polling also sees panes created after the lab started. This repo does not cover subscriptions yet.
 
 ## Gotchas
 
