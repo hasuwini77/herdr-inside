@@ -1,0 +1,14 @@
+{
+  "_note": "Invented data. Not recorded from a real session. t is milliseconds since replay start.",
+  "events": [
+    { "t": 0,     "pane": "w1:p1", "agent": "claude", "status": "idle" },
+    { "t": 0,     "pane": "w1:p2", "agent": "codex",  "status": "idle" },
+    { "t": 1000,  "pane": "w1:p1", "agent": "claude", "status": "working" },
+    { "t": 4200,  "pane": "w1:p1", "agent": "claude", "status": "blocked" },
+    { "t": 6500,  "pane": "w1:p1", "agent": "claude", "status": "working" },
+    { "t": 7000,  "pane": "w1:p2", "agent": "codex",  "status": "working" },
+    { "t": 12000, "pane": "w1:p1", "agent": "claude", "status": "done" },
+    { "t": 15000, "pane": "w1:p1", "agent": "claude", "status": "idle" },
+    { "t": 16000, "pane": "w1:p2", "agent": "codex",  "status": "done" }
+  ]
+}
